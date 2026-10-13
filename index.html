@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>账户中心采集台</title>
+  <link rel="stylesheet" href="./console.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>账户中心采集台</h1>
+      <div class="sub">远程看设备状态、改定时计划、查运行记录。采集本身在采集机上运行。</div>
+    </header>
+
+    <section id="loginView" class="card">
+      <h2>管理员登录</h2>
+      <label>邮箱 <input id="email" type="email" autocomplete="username" /></label>
+      <label>密码 <input id="password" type="password" autocomplete="current-password" /></label>
+      <button id="loginBtn" class="primary">登录</button>
+      <div id="loginError" class="error hidden"></div>
+      <div class="hint">登录一次会记住；白名单由服务端决定。</div>
+    </section>
+
+    <section id="appView" class="hidden">
+      <div class="toolbar">
+        <span id="userEmail"></span>
+        <button id="refreshBtn">立即刷新</button>
+        <button id="logoutBtn">退出</button>
+      </div>
+
+      <div class="card">
+        <h2>采集设备</h2>
+        <div id="devices"></div>
+      </div>
+
+      <div class="card">
+        <h2>最近运行</h2>
+        <div id="runs"></div>
+      </div>
+
+      <div class="card">
+        <h2>账户快照</h2>
+        <div id="snapshot"></div>
+      </div>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script src="./console.js"></script>
+</body>
+</html>
