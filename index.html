@@ -8,41 +8,67 @@
 </head>
 <body>
   <div class="app">
-    <header>
-      <h1>账户中心采集台</h1>
-      <div class="sub">远程看设备状态、改定时计划、查运行记录。采集本身在采集机上运行。</div>
-    </header>
-
-    <section id="loginView" class="card">
-      <h2>管理员登录</h2>
-      <label>邮箱 <input id="email" type="email" autocomplete="username" /></label>
-      <label>密码 <input id="password" type="password" autocomplete="current-password" /></label>
-      <button id="loginBtn" class="primary">登录</button>
-      <div id="loginError" class="error hidden"></div>
-      <div class="hint">登录一次会记住；白名单由服务端决定。</div>
+    <section id="loginView" class="login-wrap">
+      <div class="login-card">
+        <div class="brand">
+          <div class="brand-dot"></div>
+          <div>
+            <h1>账户中心采集台</h1>
+            <p>采集在采集机上跑，你在网页上看。</p>
+          </div>
+        </div>
+        <label>邮箱<input id="email" type="email" autocomplete="username" placeholder="管理员邮箱" /></label>
+        <label>密码<input id="password" type="password" autocomplete="current-password" placeholder="密码" /></label>
+        <button id="loginBtn" class="primary wide">登录</button>
+        <div id="loginError" class="error hidden"></div>
+        <div class="hint">登录一次会记住；白名单由服务端决定。</div>
+      </div>
     </section>
 
     <section id="appView" class="hidden">
-      <div class="toolbar">
-        <span id="userEmail"></span>
-        <button id="refreshBtn">立即刷新</button>
-        <button id="logoutBtn">退出</button>
-      </div>
+      <header class="hero">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> ACCOUNT CENTER · CLOUD CONSOLE</div>
+          <h1>账户中心采集台</h1>
+          <p>状态、间隔、运行记录和快照都汇总在这里；采集动作仍然发生在采集机上。</p>
+        </div>
+        <div class="hero-right">
+          <span id="userEmail" class="user-email"></span>
+          <button id="refreshBtn" class="ghost">立即刷新</button>
+          <button id="logoutBtn" class="ghost">退出</button>
+        </div>
+      </header>
 
-      <div class="card">
-        <h2>采集设备</h2>
-        <div id="devices"></div>
-      </div>
+      <section class="metric-row">
+        <div class="metric"><div class="metric-num" id="mStores">—</div><div class="metric-label">快照店铺</div></div>
+        <div class="metric"><div class="metric-num" id="mStatus">—</div><div class="metric-label">最近状态</div></div>
+        <div class="metric"><div class="metric-num" id="mSeen">—</div><div class="metric-label">最后上报</div></div>
+        <div class="metric"><div class="metric-num" id="mNext">—</div><div class="metric-label">下次自动采集</div></div>
+      </section>
 
-      <div class="card">
-        <h2>最近运行</h2>
+      <section class="card">
+        <div class="card-head">
+          <h2>采集设备</h2>
+          <span class="muted">改完配置，等设备下一次心跳确认</span>
+        </div>
+        <div id="devices" class="devices"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>最近运行</h2>
+          <span class="muted">失败会写明原因；点摘要可展开</span>
+        </div>
         <div id="runs"></div>
-      </div>
+      </section>
 
-      <div class="card">
-        <h2>账户快照</h2>
+      <section class="card">
+        <div class="card-head">
+          <h2>账户快照</h2>
+          <span class="muted">每轮采集后的最新店铺数据</span>
+        </div>
         <div id="snapshot"></div>
-      </div>
+      </section>
     </section>
 
     <div id="toast" class="toast hidden"></div>
